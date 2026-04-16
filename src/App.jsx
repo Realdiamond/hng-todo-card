@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import ProfileCard from './ProfileCard'
 import './App.css'
 
 const INITIAL_TASK = {
@@ -176,7 +177,7 @@ function getTimeState(dueDate, nowTick, status) {
   }
 }
 
-function App() {
+function TodoCardPage() {
   const [task, setTask] = useState(INITIAL_TASK)
   const [isExpanded, setIsExpanded] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
@@ -531,6 +532,16 @@ function App() {
       </article>
     </main>
   )
+}
+
+function App() {
+  const normalizedPath = window.location.pathname.replace(/\/+$/, '') || '/'
+
+  if (normalizedPath === '/profile') {
+    return <ProfileCard />
+  }
+
+  return <TodoCardPage />
 }
 
 export default App

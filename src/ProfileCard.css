@@ -1,0 +1,139 @@
+.profile-page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+}
+
+.profile-card {
+  width: min(920px, 100%);
+  background: #ffffff;
+  border: 1px solid #d7dce6;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 14px 34px rgba(8, 20, 35, 0.08);
+  display: grid;
+  gap: 1.5rem;
+  overflow: hidden;
+}
+
+.profile-header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.avatar-wrap {
+  margin: 0;
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 1 / 1;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 2px solid #ecf0f8;
+  display: block;
+}
+
+.identity-block h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 3.6vw, 2rem);
+  line-height: 1.2;
+}
+
+.identity-block p {
+  margin: 0.75rem 0 0;
+  color: #3f4d5f;
+  line-height: 1.6;
+}
+
+.identity-block time {
+  margin-top: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d7e4f7;
+  background: #f4f8ff;
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  color: #1a3556;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.social-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.social-nav a {
+  text-decoration: none;
+  border: 1px solid #d0d9ea;
+  color: #173556;
+  background: #f8fbff;
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.social-nav a:hover {
+  background: #edf4ff;
+  border-color: #b8c7de;
+}
+
+.social-nav a:focus-visible {
+  outline: 3px solid #4c87d4;
+  outline-offset: 2px;
+}
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.interest-grid h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #1a2838;
+}
+
+.interest-grid ul {
+  margin: 0.6rem 0 0;
+  padding: 0 0 0 1.1rem;
+  display: grid;
+  gap: 0.4rem;
+  color: #2f3f53;
+}
+
+@media (max-width: 700px) {
+  .profile-card {
+    padding: 1.1rem;
+    border-radius: 16px;
+  }
+
+  .profile-header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .identity-block p {
+    margin-top: 0.6rem;
+  }
+
+  .social-nav {
+    justify-content: center;
+  }
+
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+}

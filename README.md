@@ -1,32 +1,41 @@
-# HNG Todo Card - Stage 1a
+# HNG Todo Card - Stage 1a + Stage 1b
 
-A React + Vite single-card implementation for the HNG Frontend Stage 1a task.
+React + Vite implementation covering both HNG Frontend stages in one repository:
 
-This project extends Stage 0 into an interactive, stateful Todo Card while keeping all Stage 0 required selectors and semantics.
+- Stage 1a Advanced Todo Card at `/`
+- Stage 1b Profile Card at `/profile`
+
+The project keeps Stage 0 required selectors intact and adds Stage 1a and Stage 1b requirements on top.
 
 ## Live And Repo
 
 - Live URL: https://hng-todo-card-omega.vercel.app/
+- Profile Route: https://hng-todo-card-omega.vercel.app/profile
 - GitHub Repository: https://github.com/Realdiamond/hng-todo-card
+
+## Route Mapping
+
+- `/`: Stage 1a Advanced Todo Card
+- `/profile`: Stage 1b Profile Card
 
 ## Stage 1a Scope
 
-- Single Todo Card only (not a full Todo app)
-- React + plain CSS only
-- No external UI libraries
+- Single advanced Todo Card (not a full Todo app)
+- React state-driven interactions
+- Plain CSS only (no external UI libraries)
 - Semantic, testable, accessible, responsive implementation
 
-## What Changed From Stage 0
+## Stage 1b Scope
 
-- Added full edit mode with save/cancel flow
-- Added interactive status control
-- Added synchronized state between checkbox and status control
-- Added dynamic priority indicator with visual emphasis
-- Added expand/collapse behavior for long description
-- Added overdue indicator and granular time logic
-- Added periodic time updates (every 60 seconds)
+- Dedicated Profile Card page on `/profile`
+- User details rendered from a static profile object
+- Live UTC milliseconds display using `Date.now()`
+- Avatar, social links, hobbies, and dislikes sections
+- Plain CSS responsive layout
 
-## Default Card Data
+## Default Data
+
+### Todo Card
 
 - Title: Finish HNG Stage 1a Task
 - Description: Long descriptive text (for collapse/expand demonstration)
@@ -34,6 +43,13 @@ This project extends Stage 0 into an interactive, stateful Todo Card while keepi
 - Status: In Progress
 - Tags: work, urgent, frontend
 - Due date source: datetime value used for live calculations
+
+### Profile Card
+
+- Name: Real Diamond
+- Bio: Frontend engineer focused on accessible interfaces and clean implementation
+- Social links: GitHub, LinkedIn, Twitter
+- Lists: Hobbies and Dislikes
 
 ## Implemented Test IDs
 
@@ -71,91 +87,55 @@ This project extends Stage 0 into an interactive, stateful Todo Card while keepi
 - test-todo-collapsible-section
 - test-todo-overdue-indicator
 
+### Stage 1b Required IDs
+
+- test-profile-card
+- test-user-name
+- test-user-bio
+- test-user-avatar
+- test-user-time
+- test-user-social-links
+- test-user-hobbies
+- test-user-dislikes
+
+### Stage 1b Optional Social IDs
+
+- test-user-social-twitter
+- test-user-social-github
+- test-user-social-linkedin
+
 ## Behavioral Notes
 
-### Edit Mode
+### Stage 1a Todo Behavior
 
-- Edit opens form mode
-- Save updates the card values
-- Cancel restores previous values
-- When edit mode closes, focus returns to the Edit button
+- Edit opens form mode with Save/Cancel
+- Save updates title, description, priority, and due date
+- Checkbox and status dropdown remain synchronized
+- Time labels update every 60 seconds while not done
+- Overdue indicator updates from due-time calculations
 
-### Status Synchronization
+### Stage 1b Profile Behavior
 
-- Checking checkbox sets status to Done
-- Unchecking checkbox sets status to Pending
-- Changing status control to Done checks checkbox
-- Status label, status control, and checkbox remain synchronized
-
-### Time And Overdue Logic
-
-- Time updates every 60 seconds using setInterval
-- Uses friendly labels such as:
-  - Due in X days
-  - Due tomorrow
-  - Due in X hours
-  - Due in X minutes
-  - Due now!
-  - Overdue by X hours/minutes
-- If status is Done:
-  - time text becomes Completed
-  - live time updates stop
-
-## Design Decisions
-
-- Kept one centered card to match assignment scope
-- Added subtle but clear visual states for:
-  - priority (left border + indicator)
-  - status (badge styles)
-  - overdue (red accent)
-  - done (muted background + strike-through)
-- Used a clear form layout in edit mode for readability and keyboard use
-- Kept styling intentionally clean and lightweight (no animations)
+- Profile route renders a separate card view
+- Current time value updates every second with `Date.now()`
+- Social links open in a new tab
 
 ## Accessibility Notes
 
-- Semantic elements used: article, h2, p, time, input, label, ul/li, button
-- All interactive controls are native and keyboard accessible
-- Expand toggle uses aria-expanded and aria-controls
-- Time remaining uses aria-live="polite"
-- Edit fields are explicitly labeled with label + htmlFor
-- Focus-visible outlines are provided for inputs, selects, textareas, and buttons
+- Semantic structure with article/header/section/nav/list elements
+- Native interactive controls for keyboard accessibility
+- Labeled form fields and visible focus outlines
+- Live time text uses `aria-live="polite"`
 
 ## Responsiveness
 
-- 320px: single-column stacked layout, full-width card
-- 768px: improved spacing and grouped controls
-- 1024px+: centered card with comfortable max width
-- Long text and tags wrap without horizontal overflow
+- Todo page remains centered and stable across breakpoints
+- Profile page switches to stacked layout on smaller screens
+- Content wraps correctly without horizontal overflow
 
 ## Known Limitations
 
-- Focus trap inside edit mode is not implemented (optional bonus item)
-- Delete action is currently a demo alert only
-- Due date formatting uses the browser local timezone
+- Todo delete action is currently a demo alert only
+- Due date display follows browser local timezone formatting
+- Route switching is pathname-based without a routing library
 
-## Run Locally
-
-1. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-2. Start dev server:
-
-   ```bash
-   npm run dev
-   ```
-
-3. Build production bundle:
-
-   ```bash
-   npm run build
-   ```
-
-4. Preview production build:
-
-   ```bash
-   npm run preview
-   ```
